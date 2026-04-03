@@ -1,0 +1,36 @@
+[
+  {
+    "Name": "Automation of Amazon S3 - Storage, Policies, Lifecycle, Replication, and Static Website",
+    "Language": "English",
+    "Files": [
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/getting_started.md",
+        "Order": 1
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/exercise1.md",
+        "Order": 2
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/exercise2.md",
+        "Order": 3
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/exercise3.md",
+        "Order": 4
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/exercise4.md",
+        "Order": 5
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/exercise5.md",
+        "Order": 6
+      },
+      {
+        "RawFilePath": "https://raw.githubusercontent.com/Monikagowdabn/simplewebsite-147/main/project/summary.md",
+        "Order": 7
+      }
+    ]
+  }
+]
