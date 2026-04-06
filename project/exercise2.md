@@ -1,111 +1,63 @@
-# Exercise 2: Set Up Bucket Policies
+# Exercise 2: Verify Bucket Policies
 
 ## What You Will Do
-In this exercise, you will attach policies to your buckets to control who can access them.
+In this exercise, you will verify that the correct bucket policies have been automatically attached to each bucket by the CloudFormation template.
 
 ---
 
-## Task 1: Add Policy to the Source Bucket
+## Task 1: Verify the Source Bucket Policy
 
-1. Go to **S3** → click on your **source bucket**
+1. Go to **S3** → click on **`s3auto-dev-sourcebucket`**
 2. Click the **Permissions** tab
-3. Scroll down to **Bucket policy** → click **Edit**
-4. Paste the following policy *(replace `YOUR_ACCOUNT_ID` and `source-bucket-yourname`)*:
+3. Scroll down to **Bucket policy**
+4. Confirm the policy is present and contains the following:
+   - **Sid:** `AllowReplicationRoleAccess` ✅
+   - **Effect:** `Allow` ✅
+   - **Actions include:** `s3:GetObjectVersionForReplication`, `s3:ListBucket` ✅
+   - **Principal:** the `S3ReplicationRole` ARN ✅
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowReplicationRoleRead",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::YOUR_ACCOUNT_ID:role/s3-replication-role"
-      },
-      "Action": [
-        "s3:GetObject",
-        "s3:GetObjectVersion",
-        "s3:GetObjectVersionAcl"
-      ],
-      "Resource": "arn:aws:s3:::source-bucket-yourname/*"
-    }
-  ]
-}
-```
-
-5. Click **Save changes**
-
-✅ Source bucket policy saved.
+> This policy allows the replication role to read objects from the source bucket.
 
 ---
 
-## Task 2: Add Policy to the Destination Bucket
+## Task 2: Verify the Destination Bucket Policy
 
-1. Go to **S3** → click on your **destination bucket**
+1. Go to **S3** → click on **`s3auto-dev-destinationbucket`**
 2. Click the **Permissions** tab
-3. Scroll down to **Bucket policy** → click **Edit**
-4. Paste the following policy *(replace `YOUR_ACCOUNT_ID` and `destination-bucket-yourname`)*:
+3. Scroll down to **Bucket policy**
+4. Confirm the policy is present and contains the following:
+   - **Sid:** `AllowReplicationWrite` ✅
+   - **Effect:** `Allow` ✅
+   - **Actions include:** `s3:ReplicateObject`, `s3:ReplicateDelete`, `s3:ReplicateTags` ✅
+   - **Principal:** the `S3ReplicationRole` ARN ✅
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "AllowReplicationRoleWrite",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::YOUR_ACCOUNT_ID:role/s3-replication-role"
-      },
-      "Action": [
-        "s3:ReplicateObject",
-        "s3:ReplicateDelete",
-        "s3:ReplicateTags"
-      ],
-      "Resource": "arn:aws:s3:::destination-bucket-yourname/*"
-    }
-  ]
-}
-```
-
-5. Click **Save changes**
-
-✅ Destination bucket policy saved.
+> This policy allows the replication role to write replicated objects into the destination bucket.
 
 ---
 
-## Task 3: Add Policy to the Website Bucket
+## Task 3: Verify the Website Bucket Policy
 
-1. Go to **S3** → click on your **website bucket**
+1. Go to **S3** → click on **`s3auto-dev-websitebucket`**
 2. Click the **Permissions** tab
-3. Scroll down to **Bucket policy** → click **Edit**
-4. Paste the following policy *(replace `website-bucket-yourname`)*:
+3. Scroll down to **Bucket policy**
+4. Confirm the policy is present and contains the following:
+   - **Sid:** `PublicReadGetObject` ✅
+   - **Effect:** `Allow` ✅
+   - **Principal:** `*` (everyone) ✅
+   - **Action:** `s3:GetObject` ✅
 
-```json
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "PublicReadAccess",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::website-bucket-yourname/*"
-    }
-  ]
-}
-```
-
-5. Click **Save changes**
-
-✅ Website bucket policy saved.
+> This policy allows anyone on the internet to read files from the website bucket, which is required for public website hosting.
 
 ---
 
 ## Verify
 
-1. Go to each bucket → **Permissions** tab → **Bucket policy**
-2. Confirm each bucket shows the correct policy you just added
+| Bucket | Policy | Purpose |
+|--------|--------|---------|
+| `s3auto-dev-sourcebucket` | ✅ AllowReplicationRoleAccess | Replication read access |
+| `s3auto-dev-destinationbucket` | ✅ AllowReplicationWrite | Replication write access |
+| `s3auto-dev-websitebucket` | ✅ PublicReadGetObject | Public website access |
 
 ---
 
-You are now ready for **Exercise 3: Configure Lifecycle Rules**
+You are now ready for **Exercise 3: Verify Lifecycle Rules**
