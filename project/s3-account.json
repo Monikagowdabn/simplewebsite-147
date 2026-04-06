@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "Assignment 7 - Complete Amazon S3 Automation: Bucket Creation, Policies, Lifecycle, Replication, and Static Website Hosting",
+  "Description": "Complete Amazon S3 Automation: Bucket Creation, Policies, Lifecycle, Replication, and Static Website Hosting",
   "Parameters": {
     "ProjectName": {
       "Type": "String",
@@ -94,6 +94,9 @@
     "SourceBucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
+        "BucketName": {
+          "Fn::Sub": "${ProjectName}-${Environment}-sourcebucket"
+        },
         "PublicAccessBlockConfiguration": {
           "BlockPublicAcls": true,
           "BlockPublicPolicy": true,
@@ -169,6 +172,9 @@
     "DestinationBucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
+        "BucketName": {
+          "Fn::Sub": "${ProjectName}-${Environment}-destinationbucket"
+        },
         "PublicAccessBlockConfiguration": {
           "BlockPublicAcls": true,
           "BlockPublicPolicy": true,
@@ -195,6 +201,9 @@
     "WebsiteBucket": {
       "Type": "AWS::S3::Bucket",
       "Properties": {
+        "BucketName": {
+          "Fn::Sub": "${ProjectName}-${Environment}-websitebucket"
+        },
         "PublicAccessBlockConfiguration": {
           "BlockPublicAcls": false,
           "BlockPublicPolicy": false,
