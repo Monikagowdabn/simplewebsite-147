@@ -1,103 +1,81 @@
-# Exercise 5: Host a Static Website
+# Exercise 5: View Your Static Website
 
 ## What You Will Do
-In this exercise, you will turn your website bucket into a publicly accessible static website and upload your website files.
+In this exercise, you will get the website URL from CloudFormation Outputs and open your live static website that was automatically deployed by the Lambda function.
 
 ---
 
-## Task 1: Prepare Your Website Files
+## Task 1: Get the Website URL from CloudFormation
 
-Before configuring the bucket, create two simple HTML files on your computer.
-
-**index.html** — copy and save this as `index.html`:
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My S3 Website</title>
-  </head>
-  <body>
-    <h1>Welcome to My S3 Website!</h1>
-    <p>This website is hosted on Amazon S3.</p>
-  </body>
-</html>
+1. Go to **AWS Management Console** → search for **CloudFormation** → click **CloudFormation**
+2. Click on your stack name
+3. Click the **Outputs** tab
+4. Find the key **`WebsiteURL`**
+5. Copy the URL value — it will look like:
 ```
-
-**error.html** — copy and save this as `error.html`:
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Error</title>
-  </head>
-  <body>
-    <h1>404 - Page Not Found</h1>
-    <p>The page you are looking for does not exist.</p>
-  </body>
-</html>
+http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com
 ```
 
 ---
 
-## Task 2: Enable Static Website Hosting
+## Task 2: Verify Website Files in the Bucket
 
-1. Go to **S3** → click on your **website bucket**
+1. Go to **S3** → click on **`s3auto-dev-websitebucket`**
+2. Click the **Objects** tab
+3. Confirm both files are present:
+   - **`index.html`** ✅
+   - **`error.html`** ✅
+
+> These files were automatically uploaded by the Lambda function during stack deployment.
+
+---
+
+## Task 3: Open Your Website
+
+1. Paste the **WebsiteURL** you copied in Task 1 into your browser
+2. You should see the **Vision Board** website load successfully ✅
+3. The page should display:
+   - A hero section with **"Dream Big. Start Today."**
+   - Vision board image grid
+   - Motivational quotes
+   - Daily affirmations
+   - Goals roadmap
+
+---
+
+## Task 4: Test the Error Page
+
+1. Take the website URL and add `/anything` at the end
+   ```
+   http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com/anything
+   ```
+2. You should see the **404 error page** load with the message **"Getting Lost is Part of the Journey"** ✅
+
+---
+
+## Task 5: Verify Static Website Hosting Settings
+
+1. Go to **S3** → click on **`s3auto-dev-websitebucket`**
 2. Click the **Properties** tab
-3. Scroll down to **Static website hosting** → click **Edit**
-4. Select **Enable**
-5. Under **Hosting type**, select **Host a static website**
-6. Enter the following:
-   - **Index document:** `index.html`
-   - **Error document:** `error.html`
-7. Click **Save changes**
-
-✅ Static website hosting enabled.
-
----
-
-## Task 3: Upload Your Website Files
-
-1. Go to your **website bucket** → click the **Objects** tab
-2. Click **Upload**
-3. Click **Add files**
-4. Select both `index.html` and `error.html` from your computer
-5. Click **Upload**
-6. Click **Close** once upload is complete
-
-✅ Website files uploaded.
-
----
-
-## Task 4: Get Your Website URL
-
-1. Go to your **website bucket** → click the **Properties** tab
-2. Scroll down to **Static website hosting**
-3. Copy the **Bucket website endpoint** URL shown at the bottom
-
-It will look something like:
-```
-http://website-bucket-yourname.s3-website-eu-north-1.amazonaws.com
-```
-
----
-
-## Task 5: Open Your Website
-
-1. Paste the URL in your browser
-2. You should see your webpage with the message **"Welcome to My S3 Website!"**
-
-✅ Your website is live!
+3. Scroll down to **Static website hosting**
+4. Confirm:
+   - **Static website hosting:** Enabled ✅
+   - **Index document:** `index.html` ✅
+   - **Error document:** `error.html` ✅
+   - **Bucket website endpoint:** matches your WebsiteURL ✅
 
 ---
 
 ## Verify
 
-1. Open the website URL — confirm `index.html` loads correctly
-2. Add `/anything` to the URL — confirm `error.html` loads showing the 404 message
-3. Go to **website bucket** → **Objects** tab — confirm both files are listed
+| Check | Status |
+|-------|--------|
+| `index.html` present in website bucket | ✅ |
+| `error.html` present in website bucket | ✅ |
+| Website URL opens Vision Board page | ✅ |
+| Wrong URL shows 404 error page | ✅ |
+| Static website hosting enabled on bucket | ✅ |
 
 ---
 
-You have completed all exercises! Head over to the **Summary** to review what you built.
+You have completed all exercises! Head over to the **Summary** to review what was built.
