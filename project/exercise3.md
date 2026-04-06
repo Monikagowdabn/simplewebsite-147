@@ -1,72 +1,57 @@
-# Exercise 3: Configure Lifecycle Rules
+# Exercise 3: Verify Lifecycle Rules
 
 ## What You Will Do
-In this exercise, you will set up lifecycle rules on your buckets so that objects automatically move to cheaper storage classes over time.
+In this exercise, you will verify that lifecycle rules have been automatically configured on the source and website buckets by the CloudFormation template.
 
 ---
 
 ## What Are Lifecycle Rules?
 
-Lifecycle rules automatically move your objects to different storage classes based on age:
+Lifecycle rules automatically move your objects to cheaper storage classes based on their age:
 
-| Days | Storage Class | Cost |
-|---|---|---|
-| 0 – 30 days | S3 Standard | Normal |
-| After 30 days | Standard-IA | Cheaper |
-| After 60 days | Intelligent-Tiering | Cheapest |
-
----
-
-## Task 1: Add Lifecycle Rule to the Source Bucket
-
-1. Go to **S3** → click on your **source bucket**
-2. Click the **Management** tab
-3. Scroll down to **Lifecycle rules** → click **Create lifecycle rule**
-4. Enter the following:
-   - **Lifecycle rule name:** `lifecycle-rule`
-   - **Choose a rule scope:** Select **Apply to all objects in the bucket**
-   - Check the acknowledgement box
-5. Under **Lifecycle rule actions**, check **Transition current versions of objects between storage classes**
-6. Click **Add transition**:
-   - **Storage class:** `Standard-IA`
-   - **Days after object creation:** `30`
-7. Click **Add transition** again:
-   - **Storage class:** `Intelligent-Tiering`
-   - **Days after object creation:** `60`
-8. Click **Create rule**
-
-✅ Lifecycle rule added to source bucket.
+| Days | Storage Class | Purpose |
+|------|--------------|---------|
+| 0 – 30 days | **S3 Standard** | Frequently accessed data |
+| After 30 days | **Standard-IA** | Infrequently accessed, lower cost |
+| After 60 days | **Intelligent-Tiering** | Auto-optimizes based on access patterns |
 
 ---
 
-## Task 2: Add Lifecycle Rule to the Website Bucket
+## Task 1: Verify Lifecycle Rule on the Source Bucket
 
-1. Go to **S3** → click on your **website bucket**
+1. Go to **S3** → click on **`s3auto-dev-sourcebucket`**
 2. Click the **Management** tab
-3. Scroll down to **Lifecycle rules** → click **Create lifecycle rule**
-4. Enter the following:
-   - **Lifecycle rule name:** `lifecycle-rule`
-   - **Choose a rule scope:** Select **Apply to all objects in the bucket**
-   - Check the acknowledgement box
-5. Under **Lifecycle rule actions**, check **Transition current versions of objects between storage classes**
-6. Click **Add transition**:
-   - **Storage class:** `Standard-IA`
-   - **Days after object creation:** `30`
-7. Click **Add transition** again:
-   - **Storage class:** `Intelligent-Tiering`
-   - **Days after object creation:** `60`
-8. Click **Create rule**
+3. Scroll down to **Lifecycle rules**
+4. Confirm the rule named **`AutoTierTransitionRule`** is listed ✅
+5. Click on the rule to see details and confirm:
+   - **Status:** Enabled ✅
+   - **Scope:** Applies to all objects (Prefix is empty) ✅
+   - **Transition 1:** Move to `Standard-IA` after **30 days** ✅
+   - **Transition 2:** Move to `Intelligent-Tiering` after **60 days** ✅
 
-✅ Lifecycle rule added to website bucket.
+---
+
+## Task 2: Verify Lifecycle Rule on the Website Bucket
+
+1. Go to **S3** → click on **`s3auto-dev-websitebucket`**
+2. Click the **Management** tab
+3. Scroll down to **Lifecycle rules**
+4. Confirm the rule named **`WebsiteAssetLifecycle`** is listed ✅
+5. Click on the rule to see details and confirm:
+   - **Status:** Enabled ✅
+   - **Scope:** Applies to all objects (Prefix is empty) ✅
+   - **Transition 1:** Move to `Standard-IA` after **30 days** ✅
+   - **Transition 2:** Move to `Intelligent-Tiering` after **60 days** ✅
 
 ---
 
 ## Verify
 
-1. Go to **source bucket** → **Management** tab → **Lifecycle rules**
-2. Confirm `lifecycle-rule` is listed and status shows **Enabled**
-3. Repeat the same check for the **website bucket**
+| Bucket | Rule Name | 30 Days | 60 Days |
+|--------|-----------|---------|---------|
+| `s3auto-dev-sourcebucket` | ✅ AutoTierTransitionRule | Standard-IA | Intelligent-Tiering |
+| `s3auto-dev-websitebucket` | ✅ WebsiteAssetLifecycle | Standard-IA | Intelligent-Tiering |
 
 ---
 
-You are now ready for **Exercise 4: Set Up Replication**
+You are now ready for **Exercise 4: Verify Replication**
