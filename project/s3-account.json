@@ -16,6 +16,15 @@
         "prod"
       ],
       "Description": "Deployment environment"
+    },
+    "CheckAcknowledgement": {
+      "Type": "String",
+      "Default": "TRUE",
+      "AllowedValues": [
+        "TRUE",
+        "FALSE"
+      ],
+      "Description": "Set TRUE to acknowledge CAPABILITY_NAMED_IAM."
     }
   },
   "Resources": {
