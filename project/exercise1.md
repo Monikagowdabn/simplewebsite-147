@@ -1,63 +1,67 @@
-# Exercise 1: Create Your S3 Buckets
+# Exercise 1: Verify Your S3 Buckets
 
 ## What You Will Do
-In this exercise, you will create three S3 buckets — a source bucket, a destination bucket, and a website bucket.
+In this exercise, you will confirm that the three S3 buckets were automatically created and configured correctly by the CloudFormation template.
 
 ---
 
-## Task 1: Create the Source Bucket
+## Task 1: Open the S3 Console
 
-1. Go to **AWS Management Console** → search for **S3** → click **S3**
-2. Click **Create bucket**
-3. Enter the following details:
-   - **Bucket name:** `source-bucket-yourname` *(replace yourname with your name)*
-   - **Region:** Select your preferred region *(e.g. eu-north-1)*
-4. Under **Block Public Access settings**, leave all options **checked** (keep it private)
-5. Scroll down to **Bucket Versioning** → click **Enable**
-6. Click **Create bucket**
-
-✅ Your source bucket is created.
+1. Go to **AWS Management Console**
+2. In the top search bar, search for **S3** → click **S3**
+3. You should see a list of all your buckets
 
 ---
 
-## Task 2: Create the Destination Bucket
+## Task 2: Verify the Source Bucket
 
-1. Click **Create bucket**
-2. Enter the following details:
-   - **Bucket name:** `destination-bucket-yourname`
-   - **Region:** Select a **different region** from the source bucket *(e.g. eu-west-1)*
-3. Under **Block Public Access settings**, leave all options **checked** (keep it private)
-4. Scroll down to **Bucket Versioning** → click **Enable**
-5. Click **Create bucket**
-
-✅ Your destination bucket is created.
+1. Look for the bucket named **`s3auto-dev-sourcebucket`**
+2. Click on it → go to the **Properties** tab
+3. Confirm the following:
+   - **Bucket Versioning** → shows **Enabled** ✅
+   - **Default encryption** → shows **Enabled** ✅
+4. Go to the **Permissions** tab
+5. Confirm **Block Public Access** shows all four settings as **On** ✅
 
 ---
 
-## Task 3: Create the Website Bucket
+## Task 3: Verify the Destination Bucket
 
-1. Click **Create bucket**
-2. Enter the following details:
-   - **Bucket name:** `website-bucket-yourname`
-   - **Region:** Select any region
-3. Under **Block Public Access settings**:
-   - **Uncheck** all options
-   - Check the acknowledgement box that appears
-4. Scroll down to **Bucket Versioning** → click **Enable**
-5. Click **Create bucket**
+1. Go back to the S3 bucket list
+2. Look for the bucket named **`s3auto-dev-destinationbucket`**
+3. Click on it → go to the **Properties** tab
+4. Confirm the following:
+   - **Bucket Versioning** → shows **Enabled** ✅
+5. Go to the **Permissions** tab
+6. Confirm **Block Public Access** shows all four settings as **On** ✅
 
-✅ Your website bucket is created.
+---
+
+## Task 4: Verify the Website Bucket
+
+1. Go back to the S3 bucket list
+2. Look for the bucket named **`s3auto-dev-websitebucket`**
+3. Click on it → go to the **Properties** tab
+4. Confirm the following:
+   - **Bucket Versioning** → shows **Enabled** ✅
+   - **Static website hosting** → shows **Enabled** ✅
+   - **Index document** → shows `index.html` ✅
+   - **Error document** → shows `error.html` ✅
+5. Go to the **Permissions** tab
+6. Confirm **Block Public Access** shows all four settings as **Off** ✅
 
 ---
 
 ## Verify
 
-1. On the S3 console, confirm you can see all three buckets:
-   - `source-bucket-yourname`
-   - `destination-bucket-yourname`
-   - `website-bucket-yourname`
-2. Click each bucket → go to **Properties** tab → confirm **Versioning** shows **Enabled**
+Confirm all three buckets are visible in the S3 console:
+
+| Bucket | Versioning | Public Access |
+|--------|-----------|---------------|
+| `s3auto-dev-sourcebucket` | ✅ Enabled | 🔒 Blocked |
+| `s3auto-dev-destinationbucket` | ✅ Enabled | 🔒 Blocked |
+| `s3auto-dev-websitebucket` | ✅ Enabled | 🌐 Public |
 
 ---
 
-You are now ready for **Exercise 2: Set Up Bucket Policies**
+You are now ready for **Exercise 2: Verify Bucket Policies**
