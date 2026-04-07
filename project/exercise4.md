@@ -17,6 +17,7 @@ In this exercise, you will verify that replication has been automatically config
    - **Destination bucket:** `s3auto-dev-destinationbucket` ✅
    - **Storage class:** Standard ✅
    - **IAM Role:** `S3ReplicationRole` ✅
+<img width="1919" height="875" alt="image" src="https://github.com/user-attachments/assets/01075873-4eb7-46d0-b690-3d58e64180cf" />
 
 ---
 
@@ -29,6 +30,7 @@ In this exercise, you will verify that replication has been automatically config
    - **Trusted entity:** `s3.amazonaws.com` ✅
    - **Permissions policy:** `S3ReplicationPolicy` ✅
    - Policy allows actions: `GetObjectVersionForReplication`, `ReplicateObject`, `ReplicateDelete` ✅
+<img width="1914" height="863" alt="image" src="https://github.com/user-attachments/assets/3a0b4a75-0b49-4bd3-ae37-d441e53bc58a" />
 
 ---
 
@@ -40,6 +42,7 @@ In this exercise, you will verify that replication has been automatically config
 4. Confirm **`test-object.txt`** is present ✅
 
 > This file was automatically uploaded by the Lambda function when the stack was deployed.
+<img width="1903" height="770" alt="image" src="https://github.com/user-attachments/assets/25c696e9-e573-49d2-a2ca-06ea4953d863" />
 
 ---
 
@@ -52,6 +55,7 @@ In this exercise, you will verify that replication has been automatically config
 5. Confirm **`test-object.txt`** has been replicated there ✅
 
 > If the file is not yet visible, wait another minute and refresh the page.
+<img width="1912" height="860" alt="image" src="https://github.com/user-attachments/assets/bce3f575-c191-47fe-8982-2e970cd3f3bc" />
 
 ---
 
