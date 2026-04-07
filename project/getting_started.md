@@ -12,11 +12,14 @@ Your job in each exercise is to **explore, verify, and understand** what was bui
 
 | Resource | Details |
 |---|---|
-| **Source Bucket** | `s3auto-dev-sourcebucket` — Private, versioning enabled, lifecycle rules configured |
-| **Destination Bucket** | `s3auto-dev-destinationbucket` — Private, versioning enabled, replication target |
-| **Website Bucket** | `s3auto-dev-websitebucket` — Public, static website hosting enabled |
+| **Source Bucket** | `source-bucket-{DeploymentID}` — Private, versioning enabled, lifecycle rules configured |
+| **Destination Bucket** | `destination-bucket-{DeploymentID}` — Private, versioning enabled, replication target |
+| **Website Bucket** | `website-bucket-{DeploymentID}` — Public, static website hosting enabled |
 | **IAM Role** | `S3ReplicationRole` — Allows S3 to replicate objects between buckets |
-| **Lambda Function** | Auto-uploaded `index.html`, `error.html`, and a replication test object |
+| **IAM Role** | `LambdaExecutionRole` — Allows Lambda to upload files to S3 |
+| **Lambda Function** | `WebsiteFileUploaderFunction` — Auto-uploaded `index.html`, `error.html`, and a replication test object |
+
+> **Note:** `{DeploymentID}` is a unique ID automatically injected by CloudLabs. Your actual bucket names will have this ID appended — for example: `source-bucket-abc123`.
 
 ---
 
@@ -35,11 +38,20 @@ Your job in each exercise is to **explore, verify, and understand** what was bui
 ## How to Access the AWS Console
 
 1. On the **CloudLabs** portal, click **Start Lab**
+
 2. Wait until the status turns **green**
+
 3. Click **AWS** to open the AWS Management Console
+
 4. In the top search bar, search for **CloudFormation**
+
 5. Click on your stack → go to the **Outputs** tab
-6. Note down the **WebsiteURL** — you will need it in Exercise 5
+
+6. Note down the following output values — you will need them throughout the exercises:
+   - **`SourceBucketName`** — your source bucket name
+   - **`DestinationBucketName`** — your destination bucket name
+   - **`WebsiteBucketName`** — your website bucket name
+   - **`WebsiteURL`** — your live website URL (needed in Exercise 5)
 
 ---
 
