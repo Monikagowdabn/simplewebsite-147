@@ -18,6 +18,9 @@ In this exercise, you will verify that the correct bucket policies have been aut
 
 > This policy allows the replication role to read objects from the source bucket.
 
+
+<img width="1897" height="890" alt="image" src="https://github.com/user-attachments/assets/0724075c-03f9-4918-81a1-edd7ff57d42f" />
+
 ---
 
 ## Task 2: Verify the Destination Bucket Policy
@@ -33,6 +36,8 @@ In this exercise, you will verify that the correct bucket policies have been aut
 
 > This policy allows the replication role to write replicated objects into the destination bucket.
 
+<img width="1902" height="889" alt="image" src="https://github.com/user-attachments/assets/ba2344da-313c-4cb1-a3bc-4b1aa0e35399" />
+
 ---
 
 ## Task 3: Verify the Website Bucket Policy
@@ -47,6 +52,7 @@ In this exercise, you will verify that the correct bucket policies have been aut
    - **Action:** `s3:GetObject` ✅
 
 > This policy allows anyone on the internet to read files from the website bucket, which is required for public website hosting.
+<img width="1896" height="877" alt="image" src="https://github.com/user-attachments/assets/1b8b614a-818f-4536-9a4d-9cf3afe4a948" />
 
 ---
 
