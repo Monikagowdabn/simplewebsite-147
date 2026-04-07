@@ -1,0 +1,16 @@
+{
+  "parameters": {
+    "ProjectName": {
+      "value": "s3auto"
+    },
+    "Environment": {
+      "value": "dev"
+    },
+    "CloudLabsDeploymentID": {
+      "value": "GET-DEPLOYMENT-ID"
+    },
+    "CheckAcknowledgement": {
+      "value": "TRUE"
+    }
+  }
+}
