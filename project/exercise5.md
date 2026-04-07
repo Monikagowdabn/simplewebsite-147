@@ -15,6 +15,7 @@ In this exercise, you will get the website URL from CloudFormation Outputs and o
 ```
 http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com
 ```
+<img width="1907" height="838" alt="image" src="https://github.com/user-attachments/assets/a0fbc8d3-d599-48f5-a996-3bd52282e870" />
 
 ---
 
@@ -27,6 +28,7 @@ http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com
    - **`error.html`** ✅
 
 > These files were automatically uploaded by the Lambda function during stack deployment.
+<img width="1918" height="746" alt="image" src="https://github.com/user-attachments/assets/fbab94bc-29ec-4f44-ad33-1157b3428b3b" />
 
 ---
 
@@ -40,6 +42,11 @@ http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com
    - Motivational quotes
    - Daily affirmations
    - Goals roadmap
+<img width="1895" height="953" alt="image" src="https://github.com/user-attachments/assets/5e682cd3-9efd-4d42-8e31-2da7dee06667" />
+<img width="1261" height="859" alt="image" src="https://github.com/user-attachments/assets/fc83e970-9d0b-4135-8af4-53bc8f5d75c3" />
+<img width="1896" height="940" alt="image" src="https://github.com/user-attachments/assets/1a6748a5-bedf-433d-8718-1bfca9830edc" />
+<img width="1882" height="922" alt="image" src="https://github.com/user-attachments/assets/16085dbf-5cf9-4763-83f6-939da703d33e" />
+
 
 ---
 
@@ -50,6 +57,7 @@ http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com
    http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com/anything
    ```
 2. You should see the **404 error page** load with the message **"Getting Lost is Part of the Journey"** ✅
+<img width="1905" height="956" alt="image" src="https://github.com/user-attachments/assets/6445a840-e894-4918-a139-522f92b1b812" />
 
 ---
 
@@ -63,6 +71,7 @@ http://s3auto-dev-websitebucket.s3-website-us-east-1.amazonaws.com
    - **Index document:** `index.html` ✅
    - **Error document:** `error.html` ✅
    - **Bucket website endpoint:** matches your WebsiteURL ✅
+<img width="1865" height="835" alt="image" src="https://github.com/user-attachments/assets/33728101-fba2-4845-a3e1-2a279a0f6591" />
 
 ---
 
