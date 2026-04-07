@@ -28,6 +28,7 @@ Lifecycle rules automatically move your objects to cheaper storage classes based
    - **Scope:** Applies to all objects (Prefix is empty) ✅
    - **Transition 1:** Move to `Standard-IA` after **30 days** ✅
    - **Transition 2:** Move to `Intelligent-Tiering` after **60 days** ✅
+<img width="1912" height="868" alt="image" src="https://github.com/user-attachments/assets/7c770412-7b84-4303-bac1-6b49cfdc3f15" />
 
 ---
 
@@ -42,6 +43,7 @@ Lifecycle rules automatically move your objects to cheaper storage classes based
    - **Scope:** Applies to all objects (Prefix is empty) ✅
    - **Transition 1:** Move to `Standard-IA` after **30 days** ✅
    - **Transition 2:** Move to `Intelligent-Tiering` after **60 days** ✅
+<img width="1918" height="884" alt="image" src="https://github.com/user-attachments/assets/4eb65332-3d54-4005-a4a7-2ff674adb361" />
 
 ---
 
